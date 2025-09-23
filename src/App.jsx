@@ -1,17 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
+import DataTable from './pages/DataTable'
+import useFetchData from './hooks/useFetchData'
 
 function App() {
-    const [count, setCount] = useState(0)
-
     return (
-        <>
-            <h1 className="bg-red-400 text-black text-3xl py-10 text-center">
-                Test
-            </h1>
-        </>
+        <div className="min-h-screen bg-gray-50">
+            <DataTable />
+        </div>
     )
 }
 
