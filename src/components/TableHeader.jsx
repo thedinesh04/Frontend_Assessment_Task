@@ -11,8 +11,11 @@ export default function TableHeader({ sortKey, sortOrder, onSort }) {
 
     return (
         <tr>
-            <th className="px-4 py-2 text-left cursor-pointer hover:underline">
-                ID
+            <th
+                className="px-4 py-2 text-left cursor-pointer hover:underline"
+                onClick={() => handleSort('id')}
+            >
+                ID {renderIndicator('id')}
             </th>
             <th
                 className="px-4 py-2 text-left cursor-pointer hover:underline"

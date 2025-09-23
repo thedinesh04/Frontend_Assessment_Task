@@ -3,8 +3,15 @@ export const tableFeaturesUtils = {
     
     sortData : (arr, key, order = 'asc') => {
         const sorted = [...arr].sort((a, b) => {
-            const x = a[key].toLowerCase();
-            const y = b[key].toLowerCase();
+            const aVal = a[key];
+            const bVal = b[key];
+
+            if (typeof aVal === "number" && typeof bVal === "number") {
+                return order === "asc" ? aVal - bVal : bVal - aVal;
+            }
+            
+            const x = String(aVal).toLowerCase();
+            const y = String(bVal).toLowerCase();
 
             if (x < y) return order === "asc" ? -1 : 1;
             if (x > y) return order === "asc" ? 1 : -1;
