@@ -95,13 +95,14 @@ export default function DataTable() {
 
     const handleToggleStatus = (id) => {
         setUsers((prev) =>
-            prev.map((u) =>
-                u.id === id
+            prev.map((user) =>
+                user.id === id
                     ? {
-                          ...u,
-                          status: u.status === 'Active' ? 'Inactive' : 'Active',
+                          ...user,
+                          status:
+                              user.status === 'Active' ? 'Inactive' : 'Active',
                       }
-                    : u,
+                    : user,
             ),
         )
     }
@@ -140,7 +141,7 @@ export default function DataTable() {
                     </button>
 
                     {exportDropdownOpen && (
-                        <div className="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                        <div className="absolute right-auto lg:right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                             <div className="py-1">
                                 <button
                                     onClick={() => handleExport('csv')}
@@ -167,7 +168,7 @@ export default function DataTable() {
             </div>
 
             <div className="overflow-x-auto border rounded-lg shadow-sm">
-                <table className="w-full table-fixed bg-white">
+                <table className="w-full  min-w-[600px] bg-white">
                     <thead className="bg-green-200 text-gray-700">
                         <TableHeader
                             isAllSelected={isAllSelected}
@@ -218,7 +219,7 @@ export default function DataTable() {
                                         {user.name}
                                     </td>
                                     <td
-                                        className="px-4 py-4 text-sm"
+                                        className="px-4 py-4 text-sm "
                                         style={{ width: '36%' }}
                                     >
                                         {user.email}
