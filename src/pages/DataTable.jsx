@@ -7,6 +7,8 @@ import TableHeader from '../components/TableHeader'
 import Pagination from '../components/Pagination'
 import ActionsMenu from '../components/ActionsMenu'
 
+import { exportDataUtil } from '../utils/exportDataUtil'
+
 export default function DataTable() {
     const { data, loading, error } = useFetchData()
 
@@ -103,6 +105,12 @@ export default function DataTable() {
         )
     }
 
+    // EXPORT
+    const handleExport = (format) => {
+        const rowsToExport = users.filter((u) => selectedRows.includes(u.id))
+        exportDataUtil(rowsToExport, format)
+    }
+
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <h1 className="text-2xl font-bold mb-4">User List</h1>
@@ -119,6 +127,33 @@ export default function DataTable() {
                         selectedStatus={statusFilter}
                         onStatusChange={setStatusFilter}
                     />
+                </div>
+                <div className="relative inline-block text-left">
+                    <button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
+                        Export ▾
+                    </button>
+                    <div className="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                        <div className="py-1">
+                            <button
+                                onClick={() => handleExport('csv')}
+                                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                                Export CSV
+                            </button>
+                            <button
+                                onClick={() => handleExport('xlsx')}
+                                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                                Export Excel
+                            </button>
+                            <button
+                                onClick={() => handleExport('pdf')}
+                                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                                Export PDF
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
