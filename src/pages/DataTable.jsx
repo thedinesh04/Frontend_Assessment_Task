@@ -22,6 +22,7 @@ export default function DataTable() {
     const itemsPerPage = 5
 
     const [selectedRows, setSelectedRows] = useState([])
+    const [exportDropdownOpen, setExportDropdownOpen] = useState(false)
 
     useEffect(() => {
         if (Array.isArray(data)) setUsers(data)
@@ -109,6 +110,7 @@ export default function DataTable() {
     const handleExport = (format) => {
         const rowsToExport = users.filter((u) => selectedRows.includes(u.id))
         exportDataUtil(rowsToExport, format)
+        setExportDropdownOpen(false)
     }
 
     return (
@@ -129,31 +131,38 @@ export default function DataTable() {
                     />
                 </div>
                 <div className="relative inline-block text-left">
-                    <button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
+                    <button
+                        onClick={() => setExportDropdownOpen((prev) => !prev)}
+                        className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 
+                   bg-blue-600 text-sm font-medium text-white  hover:bg-blue-700  focus:outline-none"
+                    >
                         Export ▾
                     </button>
-                    <div className="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                        <div className="py-1">
-                            <button
-                                onClick={() => handleExport('csv')}
-                                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            >
-                                Export CSV
-                            </button>
-                            <button
-                                onClick={() => handleExport('xlsx')}
-                                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            >
-                                Export Excel
-                            </button>
-                            <button
-                                onClick={() => handleExport('pdf')}
-                                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            >
-                                Export PDF
-                            </button>
+
+                    {exportDropdownOpen && (
+                        <div className="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                            <div className="py-1">
+                                <button
+                                    onClick={() => handleExport('csv')}
+                                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                >
+                                    Export CSV
+                                </button>
+                                <button
+                                    onClick={() => handleExport('xlsx')}
+                                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                >
+                                    Export Excel
+                                </button>
+                                <button
+                                    onClick={() => handleExport('pdf')}
+                                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                >
+                                    Export PDF
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
 
@@ -183,7 +192,7 @@ export default function DataTable() {
                             paginatedUsers.map((user) => (
                                 <tr
                                     key={user.id}
-                                    className={`border-b hover:bg-gray-50 ${
+                                    className={`border-b  ${
                                         isRowSelected(user.id)
                                             ? 'bg-blue-100'
                                             : 'hover:bg-gray-50'
