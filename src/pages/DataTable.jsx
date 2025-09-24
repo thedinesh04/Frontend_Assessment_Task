@@ -4,14 +4,18 @@ import { tableFeaturesUtils } from '../utils/tableFeaturesUtils'
 import SearchBox from '../components/SearchBox'
 import FilterDropdown from '../components/FilterDropdown'
 import TableHeader from '../components/TableHeader'
+import Pagination from '../components/Pagination'
 
 export default function DataTable() {
     const { data, loading, error } = useFetchData()
 
     const [searchText, setSearchText] = useState('')
     const [statusFilter, setStatusFilter] = useState('All')
-    const [sortKey, setSortKey] = useState('name')
+    const [sortKey, setSortKey] = useState('id')
     const [sortOrder, setSortOrder] = useState('asc')
+
+    const [currentPage, setCurrentPage] = useState(1)
+    const itemsPerPage = 5
 
     if (loading) {
         return <p className="text-center mt-10">Loading...</p>
@@ -47,6 +51,13 @@ export default function DataTable() {
         setSortOrder(order)
     }
 
+    const startIndex = (currentPage - 1) * itemsPerPage
+    const paginatedUsers = visibleUsers.slice(
+        startIndex,
+        startIndex + itemsPerPage,
+    )
+    const totalPages = Math.ceil(visibleUsers.length / itemsPerPage)
+
     return (
         <div className="p-6">
             <h1 className="text-2xl font-bold mb-4">User List</h1>
@@ -73,7 +84,7 @@ export default function DataTable() {
                         />
                     </thead>
                     <tbody>
-                        {visibleUsers.length === 0 ? (
+                        {paginatedUsers.length === 0 ? (
                             <tr>
                                 <td
                                     colSpan="4"
@@ -83,17 +94,21 @@ export default function DataTable() {
                                 </td>
                             </tr>
                         ) : (
-                            visibleUsers.map((user) => (
+                            paginatedUsers.map((user) => (
                                 <tr
                                     key={user.id}
                                     className="border-b hover:bg-gray-50"
                                 >
-                                    <td className="px-4 py-2">{user.id}</td>
-                                    <td className="px-4 py-2 font-medium">
+                                    <td className="px-4 py-2 w-16">
+                                        {user.id}
+                                    </td>
+                                    <td className="px-4 py-2 w-48">
                                         {user.name}
                                     </td>
-                                    <td className="px-4 py-2">{user.email}</td>
-                                    <td className="px-4 py-2">
+                                    <td className="px-4 py-2 w-64">
+                                        {user.email}
+                                    </td>
+                                    <td className="px-4 py-2 w-32">
                                         <span
                                             className={`px-2 py-1 text-xs font-medium rounded ${
                                                 user.status === 'Active'
@@ -109,6 +124,11 @@ export default function DataTable() {
                         )}
                     </tbody>
                 </table>
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={(page) => setCurrentPage(page)}
+                />
             </div>
         </div>
     )
