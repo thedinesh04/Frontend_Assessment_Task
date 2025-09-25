@@ -9,7 +9,7 @@ This project was built **without using any prebuilt DataTable plugins** — all 
 ## 🚀 Features
 
 - **Data Source**
-  - Fetches user data from [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users) (or mock JSON).
+  - Fetches user data from [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users).
   - Displays: **ID, Name, Email, Status (Active/Inactive)**.
 
 - **Table Functionalities**
