@@ -1,6 +1,6 @@
 # 📊 Dynamic Data Table
 
-A responsive and interactive data table built with **[your chosen framework: React/Vanilla JS/etc.]** that displays user records with features like sorting, searching, filtering, pagination, row actions, row selection, and export options.  
+A responsive and interactive data table built with React that displays user records with features like sorting, searching, filtering, pagination, row actions, row selection, and export options.  
 
 This project was built **without using any prebuilt DataTable plugins** — all logic is implemented manually.
 
@@ -37,4 +37,35 @@ This project was built **without using any prebuilt DataTable plugins** — all 
 
 ---
 
-## 📂 Project Structure
+## ⚙️ Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/thedinesh04/Frontend_Assessment_Task.git
+cd Frontend_Assessment_Task
+```
+### 2. Install dependencies
+```bash
+npm install
+```
+### 3. Run the project
+```bash
+npm run dev
+```
+### 4. Open in browser
+```bash
+http://localhost:5173/
+```
+
+## 📤 Export Options
+  - CSV → .csv file
+  - PDF → PDF export using jsPDF
+  - Excel → .xlsx file
+
+## 🛠️ Tech Stack
+  - Frontend: React.js
+  - Styling: TailwindCSS
+  - Export: Custom CSV/Excel logic + jsPDF
+ 
+## 🙌 Author
+  - Built with ❤️ by [Dinesh](https://github.com/thedinesh04)
