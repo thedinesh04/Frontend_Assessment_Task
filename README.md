@@ -27,7 +27,7 @@ This project was built **without using any prebuilt DataTable plugins** — all 
 
 - **UI/UX**
   - Responsive design (works on desktop & mobile).
-  - Clean & modern UI using **Tailwind CSS / Bootstrap / custom CSS**.
+  - Clean & modern UI using **Tailwind CSS  / custom CSS**.
 
 ---
 
