@@ -1,12 +1,40 @@
-# React + Vite
+# 📊 Dynamic Data Table
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and interactive data table built with **[your chosen framework: React/Vanilla JS/etc.]** that displays user records with features like sorting, searching, filtering, pagination, row actions, row selection, and export options.  
 
-Currently, two official plugins are available:
+This project was built **without using any prebuilt DataTable plugins** — all logic is implemented manually.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Data Source**
+  - Fetches user data from [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users) (or mock JSON).
+  - Displays: **ID, Name, Email, Status (Active/Inactive)**.
+
+- **Table Functionalities**
+  - 🔼🔽 **Sorting** → Sort by Name & Email (asc/desc).
+  - 🔍 **Search** → Search by Name or Email.
+  - 🎯 **Filtering** → Filter users by status (All / Active / Inactive).
+  - 📑 **Pagination** → Displays 5 records per page (navigable).
+  - ✅ **Row Selection** → Select single or multiple rows.
+  - 📤 **Export** → Export selected or all rows in **CSV, PDF, Excel**.
+
+- **Actions Column**
+  - ✏️ **Edit** → Logs row data in console.
+  - 🗑️ **Delete** → Removes row from table.
+  - 🔄 **Toggle Status** → Switch Active ↔ Inactive instantly.
+
+- **UI/UX**
+  - Responsive design (works on desktop & mobile).
+  - Clean & modern UI using **Tailwind CSS / Bootstrap / custom CSS**.
+
+---
+
+## 🖼️ Demo Screenshot
+
+![Dynamic Data Table Screenshot](./screenshot.png)
+
+---
+
+## 📂 Project Structure
